@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="argos"/>
+  <table-filter match-name="oportunidad"/>
+  <table-filter match-name="seguimientousuario"/>
+  <table-filter match-name="rol"/>
+  <table-filter match-name="seguimiento"/>
+  <table-filter match-name="tecnologia"/>
+  <table-filter match-name="contacto"/>
+  <table-filter match-name="documento"/>
+  <table-filter match-name="tipoactividad"/>
+  <table-filter match-name="actividad"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="estado"/>
+  <table-filter match-name="empresa"/>
+  <table-filter match-name="tiposeguimiento"/>
+  <table-filter match-name="usuariorol"/>
+  <table-filter match-name="tipoproyecto"/>
+  <table-filter match-name="seguimientotiposeguimiento"/>
+</hibernate-reverse-engineering>

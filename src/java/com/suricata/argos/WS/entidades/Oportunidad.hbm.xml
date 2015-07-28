@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Oportunidad" table="oportunidad" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="contacto" class="com.suricata.argos.WS.entidades.Contacto" lazy="false">
+            <column name="Contacto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoproyecto" class="com.suricata.argos.WS.entidades.Tipoproyecto" lazy="false">
+            <column name="TipoProyecto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tecnologia" class="com.suricata.argos.WS.entidades.Tecnologia" lazy="false">
+            <column name="Tecnologia" not-null="true" />
+        </many-to-one>
+        <many-to-one name="documento" class="com.suricata.argos.WS.entidades.Documento" lazy="false">
+            <column name="Documento" />
+        </many-to-one>
+        <many-to-one name="usuario" class="com.suricata.argos.WS.entidades.Usuario" lazy="false">
+            <column name="Usuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estado" class="com.suricata.argos.WS.entidades.Estado" lazy="false">
+            <column name="Estado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empresa" class="com.suricata.argos.WS.entidades.Empresa" lazy="false">
+            <column name="Empresa" not-null="true" />
+        </many-to-one>
+        <property name="codigoInterno" type="string">
+            <column name="CodigoInterno" length="10" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="Titulo" length="70" not-null="true" />
+        </property>
+        <property name="descripcionCierre" type="string">
+            <column name="DescripcionCierre" length="250" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="Fecha" length="19" not-null="true" />
+        </property>
+        <property name="fechaCierre" type="timestamp">
+            <column name="FechaCierre" length="19" />
+        </property>
+        <set name="actividads" inverse="true">
+            <key>
+                <column name="Oportunidad" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Actividad" />
+        </set>
+        <set name="documentos" inverse="true">
+            <key>
+                <column name="Oportunidad" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Documento" />
+        </set>
+    </class>
+</hibernate-mapping>

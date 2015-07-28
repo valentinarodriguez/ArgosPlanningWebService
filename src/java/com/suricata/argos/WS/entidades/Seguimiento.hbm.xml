@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Seguimiento" table="seguimiento" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="com.suricata.argos.WS.entidades.Usuario" lazy="false">
+            <column name="UsuarioCreador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="actividad" class="com.suricata.argos.WS.entidades.Actividad" lazy="false">
+            <column name="Actividad" not-null="true" />
+        </many-to-one>
+        <property name="fechaVencimiento" type="timestamp">
+            <column name="FechaVencimiento" length="19" not-null="true" />
+        </property>
+        <property name="fechaAnuncio" type="timestamp">
+            <column name="FechaAnuncio" length="19" not-null="true" />
+        </property>
+        <property name="enviado" type="java.lang.Integer">
+            <column name="Enviado" />
+        </property>
+        <set name="seguimientotiposeguimientos" inverse="true" lazy="false">
+            <key>
+                <column name="Seguimiento" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Seguimientotiposeguimiento" />
+        </set>
+        <set name="seguimientousuarios" inverse="true">
+            <key>
+                <column name="Usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Seguimientousuario" />
+        </set>
+    </class>
+</hibernate-mapping>

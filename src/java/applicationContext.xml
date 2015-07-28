@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="mappingResources">
+          <list>
+            <value>com/suricata/argos/WS/entidades/Usuario.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Empresa.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Contacto.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Oportunidad.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Estado.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Tecnologia.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Tipoproyecto.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Seguimiento.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Actividad.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Tiposeguimiento.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Tipoactividad.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Seguimientousuario.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Documento.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Rol.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Usuariorol.hbm.xml</value>
+            <value>com/suricata/argos/WS/entidades/Seguimientotiposeguimiento.hbm.xml</value>
+          </list>
+        </property>
+        <property name="dataSource"><ref local="myDataSource"/></property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key ="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key ="hibernate.connection.pool_size">3</prop>
+                <prop key ="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+      </bean>
+
+    <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"><value>org.gjt.mm.mysql.Driver</value></property>
+        <property name="url"><value>jdbc:mysql://localhost:3306/argos</value></property>
+        <property name="username"><value>root</value></property>
+        <property name="password"><value>root</value></property>
+     </bean>
+
+    <bean id="usuarioDao" class="com.suricata.argos.WS.dao.seguridad.UsuarioDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="codigueraDao" class="com.suricata.argos.WS.dao.seguridad.CodigueraDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+   <bean id="empresaDao" class="com.suricata.argos.WS.dao.seguridad.EmpresaDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+    <bean id="contactoDao" class="com.suricata.argos.WS.dao.seguridad.ContactoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="actividadDao" class="com.suricata.argos.WS.dao.seguridad.ActividadDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="seguimientoDao" class="com.suricata.argos.WS.dao.seguridad.SeguimientoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+   <bean id="oportunidadDao" class="com.suricata.argos.WS.dao.seguridad.OportunidadDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+   <bean id="rolDao" class="com.suricata.argos.WS.dao.seguridad.RolDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+    <bean id="documentoDao" class="com.suricata.argos.WS.dao.seguridad.DocumentoDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+   <bean id="usuarioManager" class="com.suricata.argos.WS.logica.seguridad.UsuarioManagerImpl">
+       <property name="usuarioDao" ref="usuarioDao" />
+   </bean>
+
+  <bean id="actividadManager" class="com.suricata.argos.WS.logica.seguridad.ActividadManagerImpl">
+       <property name="actividadDao" ref="actividadDao" />
+       <property name="documentoDao" ref="documentoDao" />
+  </bean>
+
+    <bean id="seguimientoManager" class="com.suricata.argos.WS.logica.seguridad.SeguimientoManagerImpl">
+       <property name="seguimientoDao" ref="seguimientoDao" />
+    </bean>
+
+    <bean id="contactoManager" class="com.suricata.argos.WS.logica.seguridad.ContactoManagerImpl">
+       <property name="contactoDao" ref="contactoDao" />
+    </bean>
+
+    <bean id="empresaManager" class="com.suricata.argos.WS.logica.seguridad.EmpresaManagerImpl">
+       <property name="empresaDao" ref="empresaDao" />
+    </bean>
+
+     <bean id="oportunidadManager" class="com.suricata.argos.WS.logica.seguridad.OportunidadManagerImpl">
+       <property name="oportunidadDao" ref="oportunidadDao" />
+    </bean>
+
+   <bean id="codigueraManager" class="com.suricata.argos.WS.logica.seguridad.CodigueraManagerImpl">
+       <property name="codigueraDao" ref="codigueraDao" />
+   </bean>
+
+   <bean id="rolManager" class="com.suricata.argos.WS.logica.seguridad.RolManagerImpl">
+       <property name="rolDao" ref="rolDao" />
+       <property name="usuarioDao" ref="usuarioDao" />
+   </bean>
+    <!-- =========================  SCHEDULED TASK DEFINITIONS ========================= -->
+
+    <bean id="timerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">
+      <property name="scheduledTimerTasks">
+        <list>
+          <!-- see the example above -->
+          <ref bean="scheduledTask"/>
+        </list>
+      </property>
+    </bean>
+
+
+      <bean id="scheduledTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
+          <!-- wait 10 seconds before starting repeated execution -->
+          <property name="delay" value="10000"/>
+          <!-- run every 50 seconds 50000-->
+          <property name="period" value="5000000000"/>
+          <property name="timerTask" ref="enviarSeguimientos"/>
+      </bean>
+ 
+    <bean id="enviarSeguimientos" class="org.springframework.scheduling.timer.MethodInvokingTimerTaskFactoryBean">
+      <property name="targetObject" ref="seguimientoManager"/>
+      <property name="targetMethod" value="sincronizarSeguimientos"/>
+    </bean>
+
+
+   <!-- ========================= SCHEDULED TASK DEFINITIONS ========================= -->
+</beans>
+

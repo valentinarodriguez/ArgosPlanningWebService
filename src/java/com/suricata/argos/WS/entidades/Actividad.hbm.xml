@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Actividad" table="actividad" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="oportunidad" class="com.suricata.argos.WS.entidades.Oportunidad" lazy="false">
+              <column name="Oportunidad" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoactividad" class="com.suricata.argos.WS.entidades.Tipoactividad" lazy="false">
+            <column name="TipoActividad" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioByResponsableUsuario" class="com.suricata.argos.WS.entidades.Usuario" lazy="false">
+            <column name="ResponsableUsuario" />
+        </many-to-one>
+        <many-to-one name="documento" class="com.suricata.argos.WS.entidades.Documento" lazy="false">
+            <column name="Documento" />
+        </many-to-one>
+        <many-to-one name="contacto" class="com.suricata.argos.WS.entidades.Contacto" lazy="false">
+            <column name="ResponsableCliente" />
+        </many-to-one>
+        <many-to-one name="usuarioByUsuario" class="com.suricata.argos.WS.entidades.Usuario" lazy="false">
+            <column name="Usuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estado" class="com.suricata.argos.WS.entidades.Estado" lazy="false">
+            <column name="Estado" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="Titulo" length="50" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="Descripcion" length="50" />
+        </property>
+        <property name="fechaVencimiento" type="timestamp">
+            <column name="FechaVencimiento" length="19" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="FechaCreacion" length="19" not-null="true" />
+        </property>
+        <property name="descripcionCierre" type="string">
+            <column name="DescripcionCierre" length="50" />
+        </property>
+        <set name="seguimientos" inverse="true">
+            <key>
+                <column name="Actividad" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Seguimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

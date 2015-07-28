@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Seguimientotiposeguimiento" table="seguimientotiposeguimiento" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tiposeguimiento" class="com.suricata.argos.WS.entidades.Tiposeguimiento" lazy="false">
+            <column name="TipoSeguimiento" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seguimiento" class="com.suricata.argos.WS.entidades.Seguimiento" lazy="false">
+            <column name="Seguimiento" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

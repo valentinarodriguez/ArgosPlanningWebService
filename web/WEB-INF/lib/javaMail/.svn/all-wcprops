@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail
+END
+dsn.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/dsn.jar
+END
+imap.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/imap.jar
+END
+mailapi.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/mailapi.jar
+END
+pop3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/pop3.jar
+END
+mail.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/mail.jar
+END
+smtp.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/avalers/argos/svn/!svn/ver/29/ArgosComunitaeWebService/web/WEB-INF/lib/javaMail/smtp.jar
+END

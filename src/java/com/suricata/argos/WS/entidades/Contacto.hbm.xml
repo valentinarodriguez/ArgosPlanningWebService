@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Contacto" table="contacto" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="empresa" class="com.suricata.argos.WS.entidades.Empresa" lazy="false">
+            <column name="Empresa" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="200" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="150" not-null="true" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="Cargo" length="100" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="100" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="20" />
+        </property>
+        <property name="celular" type="string">
+            <column name="Celular" length="11" />
+        </property>
+        <property name="chat" type="string">
+            <column name="Chat" length="50" />
+        </property>
+        <property name="comentarios" type="string">
+            <column name="Comentarios" />
+        </property>
+        <set name="oportunidads" inverse="true">
+            <key>
+                <column name="Contacto" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Oportunidad" />
+        </set>
+        <set name="actividads" inverse="true">
+            <key>
+                <column name="ResponsableCliente" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Actividad" />
+        </set>
+    </class>
+</hibernate-mapping>

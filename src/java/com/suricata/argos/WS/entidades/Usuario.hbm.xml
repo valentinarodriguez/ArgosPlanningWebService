@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/08/2010 08:00:38 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.suricata.argos.WS.entidades.Usuario" table="usuario" catalog="argos">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="40" not-null="true" />
+        </property>
+        <property name="nick" type="string">
+            <column name="Nick" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="50" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="Telefono" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="50" not-null="true" />
+        </property>
+        <property name="celular" type="java.lang.Long">
+            <column name="Celular" precision="10" scale="0" />
+        </property>
+        <property name="cargo" type="string">
+            <column name="Cargo" length="50" not-null="true" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="Contrasena" length="50" not-null="true" />
+        </property>
+        <set name="oportunidads" inverse="true">
+            <key>
+                <column name="Usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Oportunidad" />
+        </set>
+        <set name="actividadsForResponsableUsuario" inverse="true">
+            <key>
+                <column name="ResponsableUsuario" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Actividad" />
+        </set>
+        <set name="actividadsForUsuario" inverse="true">
+            <key>
+                <column name="Usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Actividad" />
+        </set>
+        <set name="usuariorols" inverse="true">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Usuariorol" />
+        </set>
+        <set name="seguimientos" inverse="true">
+            <key>
+                <column name="UsuarioCreador" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Seguimiento" />
+        </set>
+        <set name="seguimientousuarios" inverse="true">
+            <key>
+                <column name="Seguimiento" not-null="true" />
+            </key>
+            <one-to-many class="com.suricata.argos.WS.entidades.Seguimientousuario" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/avalers/argos/svn/!svn/ver/40/ArgosComunitaeWebService/web/WEB-INF/lib/DataSource
+END
+commons-dbcp-1.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/avalers/argos/svn/!svn/ver/40/ArgosComunitaeWebService/web/WEB-INF/lib/DataSource/commons-dbcp-1.4.jar
+END
+commons-pool-1.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/avalers/argos/svn/!svn/ver/40/ArgosComunitaeWebService/web/WEB-INF/lib/DataSource/commons-pool-1.4.jar
+END
